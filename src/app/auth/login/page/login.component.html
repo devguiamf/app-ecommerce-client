@@ -1,0 +1,14 @@
+<div class="bg-white h-full">
+  <div class=" title mb-10 text-start text-blue-500 ">
+    <h1><strong>Piá</strong></h1>
+    <h2>commerce</h2>
+  </div>
+  
+  <div class="mx-auto">
+    <app-login-form
+      [loading]="loading"
+      (sendLoginEvent)="receiveLoginEvent($event)"
+    ></app-login-form>
+  </div>
+  
+</div>

@@ -1,0 +1,30 @@
+<section class="h-full text-black body-font">
+  <div class="flex justify-evenly">
+    <form [formGroup]="loginForm" class="bg-neutral-200 drop-shadow-2xl rounded-lg p-8 flex flex-col border border-gray-300 border-solid">
+      <p class="text-gray-900 mb-5">Seja bem vindo</p>
+      <div class="relative mb-4">
+        <label for="full-name" class="leading-7 text-sm text-gray-600 ">Email</label>
+        <input type="text" id="full-name" formControlName="email" class="w-full bg-white  rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+        @if (errorFieldForm('email')){
+          <span class="text-red-500 text-xs">{{ getErrorFieldMessage('email') }}</span>
+        }
+      </div>
+      <div class="relative mb-4">
+        <label for="senha" class="leading-7 text-sm text-gray-600">Senha</label>
+        <input [type]="typeInputPassword" formControlName="password" id="senha" name="senha" class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+        @if (errorFieldForm('password')){
+          <span class="text-red-500 text-xs">{{ getErrorFieldMessage('password') }}</span>
+        }
+      </div>
+      <div class="flex items-center justify-center mb-3">
+        <label class="text-gray-700 text-sm mr-2" for="show-password">Mostrar senha</label>
+        <input type="checkbox" id="show-password" class="form-checkbox h-5 w-5 text-indigo-600" (change)="changePasswordType()">
+      </div>
+      <button (click)="sendCredentials()" [disabled]="!loginForm.valid || loading" class="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg disabled:cursor-not-allowed disabled:bg-indigo-300">
+        {{ loading ? 'Enviado...' : 'Entrar' }}
+      </button>
+      <a class="text-center underline mt-5 cursor-pointer text-yellow-600" [routerLink]="['/signup']">Registrar-se</a>
+    </form>
+  </div>
+</section>
+

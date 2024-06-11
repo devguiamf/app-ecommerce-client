@@ -1,0 +1,24 @@
+<app-header  [userLogged]="userLogged"></app-header>
+
+<ion-content class="bg-gray-200 flex flex-col items-center" [fullscreen]="true">
+  <div class="bg-gray-100 p-3">
+
+    <app-shipping-address
+      [userInfo]="userLogged">
+    </app-shipping-address>
+  
+    <div class="mt-5">
+      <app-product-selected-list
+        [productsSelected]="productSelectedInfos">
+      </app-product-selected-list>
+    </div>
+  
+    <div class="mt-5">
+      <app-payment
+        [productsSelected]="productSelectedInfos"
+        (finishBuyEvent)="receiveFinishBuyEvent()">
+      ></app-payment>
+    </div>
+  
+  </div>  
+</ion-content>

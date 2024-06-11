@@ -1,0 +1,9 @@
+<div class="grid grid-cols-3 gap-1">
+  @for(product of productsItems; track product.id){
+    <app-product-item-card
+      [product]="product"
+      (click)="goToProductDetail(product)"
+    ></app-product-item-card>
+  }
+</div>
+

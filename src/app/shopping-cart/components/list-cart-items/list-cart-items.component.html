@@ -1,0 +1,9 @@
+@for(item of cartItems; track $index){
+  <div class="p-1 bg-white mb-2">
+    <app-cart-item
+    [cartItem]="item"
+    (removeItemEvent)="removeItem($event)"
+    (selectItemToBuyEvent)="selectItemToBuy($event)">
+  </app-cart-item>
+  </div>
+}

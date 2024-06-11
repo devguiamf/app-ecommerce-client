@@ -1,0 +1,55 @@
+<section class="text-black h-full bg-white body-font p-3 flex flex-col justify-between">
+  
+  <button [routerLink]="['/login']" type="button" class="absolute left ml-3 flex items-center justify-center text-md text-blue-500">
+    <svg class="w-5 h-5 rtl:rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18" />
+    </svg>
+    <span class="text-blue-500">Voltar</span>
+  </button>
+
+  <div class="bg-neutral-200 rounded-lg flex justify-center items-center mt-20">
+    <mat-stepper>
+      <mat-step>
+        <ng-template matStepLabel> <span class="text-black">Conta</span> </ng-template>
+        <app-form-account-signup
+          (sendFormAccountEvent)="receiveFormAccountEvent($event)">
+        </app-form-account-signup>
+      </mat-step>
+  
+      <mat-step>
+        <ng-template matStepLabel><span class="text-black">Endereço</span></ng-template>
+        <app-form-address-signup
+          [cepResponse]="cepResponse"
+          (sendFormAddressEvent)="receiveFormAddressEvent($event)"
+          (getFormByCepEvent)="receiveSearchByCepEvent($event)">
+        ></app-form-address-signup>
+      </mat-step>
+      <mat-step>
+        <ng-template matStepLabel><span class="text-black">Finalizar</span> </ng-template>
+        <h3 class="text-center">Confira seus dados abaixo</h3>
+  
+        <app-verify-forms
+          [formAccountForm]="formAccount"
+          [formAddressForm]="formAddress">
+        </app-verify-forms>
+  
+        <div class="flex items-center justify-between">
+          <button matStepperPrevious class="mt-1 bg-red-700 hover:bg-red-800 text-white py-2 px-4 rounded">
+            Voltar para endereço
+          </button>
+  
+          <button (click)="sendSignupService()" class="mt-5 bg-indigo-600 hover:bg-blue-700 text-white py-2 px-4 rounded disabled:bg-indigo-200">
+            Cadastrar
+          </button>
+        </div>
+      </mat-step>
+    </mat-stepper>
+  </div>
+
+  <div class="title text-blue-500 ">
+    <h1><strong>Piá</strong></h1>
+    <h2>commerce</h2>
+  </div>
+  
+    
+  </section>

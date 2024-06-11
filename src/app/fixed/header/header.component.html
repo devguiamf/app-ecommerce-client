@@ -1,0 +1,27 @@
+<ion-header>
+  
+  <ion-toolbar color="primary">
+    <div class="flex justify-between items-center p-5">
+      <button [routerLink]="['/shop']" class="text-start font-bold text-lg">Piá commerce</button>
+
+      <div class="flex justify-evenly items-center hover:cursor-pointer w-44">
+        @if (userLogged) {
+            <app-account-menu></app-account-menu>
+        }@else{
+            <a [routerLink]="['/login']" class="text-white font-medium border border-solid border-gray-50 rounded-lg hover:bg-yellow-300 hover:text-indigo-500 hover:border-yellow-500 text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2">Entrar</a>
+        }
+
+        <mat-icon (click)="goToCart()" aria-hidden="false" class="text-white scale-125" [matBadge]="badge" matBadgeColor="primary">shopping_cart</mat-icon>
+      </div>
+    </div>
+    
+    <ion-searchbar class="mb-2" color="light"
+      placeholder="Busque produtos"
+      type="text" 
+      [(ngModel)]="searchString"
+      (ionInput)="searchProduct()"
+      [debounce]="500"
+      >
+    </ion-searchbar>
+  </ion-toolbar>
+</ion-header>

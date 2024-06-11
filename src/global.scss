@@ -1,37 +1,48 @@
-/*
- * App Global CSS
- * ----------------------------------------------------------------------------
- * Put style rules here that you want to apply globally. These styles are for
- * the entire app and not just one component. Additionally, this file can be
- * used as an entry point to import other CSS/Sass files to be included in the
- * output CSS.
- * For more information on global stylesheets, visit the documentation:
- * https://ionicframework.com/docs/layout/global-stylesheets
- */
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
 
-/* Core CSS required for Ionic components to work properly */
-@import "@ionic/angular/css/core.css";
+@import '@ionic/angular/css/core.css';
 
-/* Basic CSS for apps built with Ionic */
-@import "@ionic/angular/css/normalize.css";
-@import "@ionic/angular/css/structure.css";
-@import "@ionic/angular/css/typography.css";
-@import "@ionic/angular/css/display.css";
+@import '@ionic/angular/css/normalize.css';
+@import '@ionic/angular/css/structure.css';
+@import '@ionic/angular/css/typography.css';
 
-/* Optional CSS utils that can be commented out */
-@import "@ionic/angular/css/padding.css";
-@import "@ionic/angular/css/float-elements.css";
-@import "@ionic/angular/css/text-alignment.css";
-@import "@ionic/angular/css/text-transformation.css";
-@import "@ionic/angular/css/flex-utils.css";
+@import '@ionic/angular/css/padding.css';
+@import '@ionic/angular/css/float-elements.css';
+@import '@ionic/angular/css/text-alignment.css';
+@import '@ionic/angular/css/text-transformation.css';
+@import '@ionic/angular/css/flex-utils.css';
+@import '@ionic/angular/css/display.css';
 
-/**
- * Ionic Dark Mode
- * -----------------------------------------------------
- * For more info, please see:
- * https://ionicframework.com/docs/theming/dark-mode
- */
+@import '@ionic/angular/css/palettes/dark.always.css';
 
-/* @import "@ionic/angular/css/palettes/dark.always.css"; */
-/* @import "@ionic/angular/css/palettes/dark.class.css"; */
-@import "@ionic/angular/css/palettes/dark.system.css";
+@import './theme/variables';
+
+.sucess-snackbar {
+  --mdc-snackbar-container-color: green;
+--mat-snack-bar-button-color: #001e00;
+--mdc-snackbar-supporting-text-color: white;
+}
+
+.error-snackbar {
+--mdc-snackbar-container-color: red ;
+--mat-snack-bar-button-color: #330000;
+--mdc-snackbar-supporting-text-color: white;
+}
+
+:root {
+  --primary: #0080ff;
+  --secoundary: #FFDE00;
+  --default: #f3f4f6;
+  --text-default: #000;
+  --text-secoundary: #374151;
+}
+
+:root .dark-theme {
+  --bg-primary: #0080ff;
+  --bg-secoundary: #FFDE00;
+  --bg-default: #f3f4f6;
+  --text-default: #000;
+  --text-secoundary: #374151;
+}

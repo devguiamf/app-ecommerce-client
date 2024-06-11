@@ -1,0 +1,30 @@
+<div>
+
+  <div class="p-3 relative">
+
+    <button (click)="removeItem()" class="absolute right-2 top-2 text-red-500">
+      Deletar
+    </button>
+
+    <div class="mt-6 flex">
+
+      <div class="flex w-2/5 ">
+        <input class="cursor-pointer mr-1" type="checkbox" [(ngModel)]="cartItem.checked" (click)="selectItemToBuy()">
+        <img
+          [ngSrc]="cartItem.image"
+          width="70"
+          height="70"
+          alt="product image"/>
+      </div>
+
+      <div class="w-full flex flex-col items-start ">
+        <span class="ml-1 text-sm text-black">{{ cartItem.productName }}</span>
+        <span class="ml-5 text-sm font-semibold text-blue-500">{{ totalItem | currency: 'R$' }}</span>
+        <div class="flex items-center mt-1 ml-4">
+          <button class="btn-counter" (click)="decrementQuantityProduct()">-</button>
+          <div class="span-counter flex justify-center items-center">{{quantityItem}}</div>
+          <button class="btn-counter" (click)="incrementQuantityProduct()">+</button>
+        </div>
+      </div>
+    </div>
+</div>

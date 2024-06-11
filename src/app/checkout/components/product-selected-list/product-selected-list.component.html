@@ -1,0 +1,7 @@
+<div class="w-full bg-white p-5 border-t border-dashed border-blue-500">
+  @for(product of productsSelected; track $index){
+    <app-product-selected
+      [productSelected]="product">
+    </app-product-selected>
+  }
+</div>
