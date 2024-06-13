@@ -38,7 +38,8 @@ import { MatIcon } from '@angular/material/icon';
     ProductsService
   ],
   exports: [
-    ProductListComponent
+    ProductListComponent,
+    ProductItemCardComponent
   ]
 })
 export class ProductsPageModule {}

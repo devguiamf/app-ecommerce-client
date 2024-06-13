@@ -15,6 +15,6 @@ export class ProductListComponent {
   ){}
 
   async goToProductDetail(product: Product){
-    await this.router.navigate(['/product', product.category.rootCategory.name, product.category.name, product.id])
+    await this.router.navigate(['/product', product.category.rootCategory?.name, product.category.name, product.id])
   }
 }

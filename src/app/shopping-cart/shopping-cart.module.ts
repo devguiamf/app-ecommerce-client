@@ -11,6 +11,8 @@ import {MatChipTrailingIcon} from "@angular/material/chips";
 import {MatIcon} from "@angular/material/icon";
 import {FormsModule} from "@angular/forms";
 import { EmptyCartMessageComponent } from './components/empty-cart-message/empty-cart-message.component';
+import { ProductsPageModule } from '../products/products.module';
+import { IonicModule } from '@ionic/angular';
 
 
 @NgModule({
@@ -22,12 +24,14 @@ import { EmptyCartMessageComponent } from './components/empty-cart-message/empty
   ],
   imports: [
     CommonModule,
+    IonicModule,
     ShoppingCartRoutingModule,
     HeaderComponent,
     NgOptimizedImage,
     MatChipTrailingIcon,
     MatIcon,
-    FormsModule
+    FormsModule,
+    ProductsPageModule
   ],
   providers: [
     ShoppingCartService

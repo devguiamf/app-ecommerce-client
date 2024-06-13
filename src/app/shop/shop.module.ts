@@ -24,7 +24,9 @@ import { ProductsPageModule } from '../products/products.module';
     PaginatorComponent,
     ProductsPageModule
   ],
-  declarations: [ShopPage],
+  declarations: [
+    ShopPage
+  ],
   providers: [
     ShopService
   ]

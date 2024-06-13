@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  api: 'http://localhost:3000'
+  api: 'https://pia-labs-ecommerce-api-e3ynalptgq-ue.a.run.app'
 };

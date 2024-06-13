@@ -5,6 +5,7 @@ import {ShoppingCartService} from "../service/shopping-cart.service";
 import {CartItem} from "../shopping-cart.interface";
 import {Subject, takeUntil} from "rxjs";
 import {Router} from "@angular/router";
+import { Product } from 'src/app/products/product.interface';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -17,6 +18,7 @@ export class ShoppingCartComponent implements OnDestroy{
   cartItems: CartItem[] = [];
   itemSelected: CartItem[] = [];
   destroy$: Subject<void> = new Subject<void>();
+  prodcutsRecomendation: Product[] = []
 
   constructor(
     private localStorage: LocalStorageService,
@@ -25,6 +27,17 @@ export class ShoppingCartComponent implements OnDestroy{
   ) {
     this.verifyUserLogged();
     this.observeBehaviorCartItems();
+    this.getProductsRecomendation();
+  }
+
+  getProductsRecomendation(){
+    this.shoppingCartService.getProductsRecomendation()
+      .pipe(takeUntil(this.destroy$))
+      .subscribe({
+        next: (response) => {
+          this.prodcutsRecomendation = response
+        }
+      })
   }
 
   verifyUserLogged() {

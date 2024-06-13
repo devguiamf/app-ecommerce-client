@@ -17,7 +17,7 @@ export class ShopPage{
   destroy$: Subject<void> = new Subject<void>();
   userLogged: UserLoggeed | null = null;
   paginationsOptions: Paginator = new Paginator({page: 1, limit: 10})
-  productPaginator!: ProductPage;
+  productPaginator: ProductPage = {page: 0, currentPage: 0, total: 0, items: []};
   
   constructor(
     private localStorage: LocalStorageService,
