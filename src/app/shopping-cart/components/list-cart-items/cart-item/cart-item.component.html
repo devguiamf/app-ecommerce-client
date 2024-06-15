@@ -11,7 +11,7 @@
       <div class="flex w-2/5 ">
         <input class="cursor-pointer mr-1" type="checkbox" [(ngModel)]="cartItem.checked" (click)="selectItemToBuy()">
         <img
-          [ngSrc]="cartItem.image"
+          [ngSrc]='cartItem.image === "" ? "/assets/icons/not-found.jpg" : cartItem.image'
           width="70"
           height="70"
           alt="product image"/>

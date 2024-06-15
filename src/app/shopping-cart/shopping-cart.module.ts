@@ -13,6 +13,7 @@ import {FormsModule} from "@angular/forms";
 import { EmptyCartMessageComponent } from './components/empty-cart-message/empty-cart-message.component';
 import { ProductsPageModule } from '../products/products.module';
 import { IonicModule } from '@ionic/angular';
+import { SpinnerComponent } from '../@shared/components/spinner/spinner.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { IonicModule } from '@ionic/angular';
     MatChipTrailingIcon,
     MatIcon,
     FormsModule,
-    ProductsPageModule
+    ProductsPageModule,
+    SpinnerComponent
   ],
   providers: [
     ShoppingCartService

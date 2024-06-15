@@ -2,7 +2,8 @@
 
     <div class="flex">
       <div>
-        <img [ngSrc]="productSelected.image" width="100" height="100" alt="Imagem do produto {{productSelected.productName}}">
+        
+        <img [ngSrc]='productSelected.image === "" ? "/assets/icons/not-found.jpg" : productSelected.image' width="100" height="100" alt="Imagem do produto {{productSelected.productName}}">
       </div>
       <div class="ml-2">
         <p class="text-sm text-black">{{ productSelected.productName }}</p>

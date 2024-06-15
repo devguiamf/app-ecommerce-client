@@ -9,7 +9,8 @@
 
      
         <div class="w-full content-start">
-          <img [src]="productDetails.image" width="400" height="150" class="object-cover mx-auto" alt="imagem do de {{productDetails.name}}">
+
+          <img [ngSrc]='productDetails.image === "" ? "/assets/icons/not-found.jpg" : productDetails.image' width="400" height="150" class="object-cover mx-auto" alt="imagem do de {{productDetails.name}}">
         </div>
     
         <div class="w-full">

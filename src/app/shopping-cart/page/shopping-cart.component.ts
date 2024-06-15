@@ -5,7 +5,7 @@ import {ShoppingCartService} from "../service/shopping-cart.service";
 import {CartItem} from "../shopping-cart.interface";
 import {Subject, takeUntil} from "rxjs";
 import {Router} from "@angular/router";
-import { Product } from 'src/app/products/product.interface';
+import { Product, ProductsSimilar } from 'src/app/products/product.interface';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -19,6 +19,7 @@ export class ShoppingCartComponent implements OnDestroy{
   itemSelected: CartItem[] = [];
   destroy$: Subject<void> = new Subject<void>();
   prodcutsRecomendation: Product[] = []
+  loading = false;
 
   constructor(
     private localStorage: LocalStorageService,
@@ -26,17 +27,23 @@ export class ShoppingCartComponent implements OnDestroy{
     private router: Router
   ) {
     this.verifyUserLogged();
-    this.observeBehaviorCartItems();
+    this.getCartItems();
     this.getProductsRecomendation();
   }
 
-  getProductsRecomendation(){
-    this.shoppingCartService.getProductsRecomendation()
+  getProductsRecomendation(){  
+    this.loading = true;  
+    this.shoppingCartService.getProductsRecomendation(this.cartItems[0].productId)
       .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: (response) => {
-          this.prodcutsRecomendation = response
-        }
+          this.prodcutsRecomendation = response.items
+          this.loading = false;
+        },
+        error: () => {
+          this.prodcutsRecomendation = []
+          this.loading = false;
+        },
       })
   }
 
@@ -49,14 +56,8 @@ export class ShoppingCartComponent implements OnDestroy{
     return this.cartItems.length > 0;
   }
 
-  observeBehaviorCartItems() {
-    this.shoppingCartService.listCartItems$
-      .pipe(takeUntil(this.destroy$))
-      .subscribe({
-        next: (response) => {
-          this.cartItems = response;
-        }
-    })
+  getCartItems(){
+    this.cartItems = this.localStorage.get(StorageKeys.cart_items) ?? [];
   }
 
   removeItem(productId: string) {
